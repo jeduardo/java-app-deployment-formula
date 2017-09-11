@@ -1,0 +1,15 @@
+[Unit]
+Description={{ service }}
+After=syslog.target network.target
+
+[Service]
+EnvironmentFile={{ directory }}/.env
+SyslogIdentifier={{ service }}
+User={{ user }}
+Group={{ group }}
+ExecStart=/usr/bin/java -jar {{ directory }}/{{ artifact }}
+WorkingDirectory={{ directory }}
+Restart=always
+
+[Install]
+WantedBy=multi-user.target

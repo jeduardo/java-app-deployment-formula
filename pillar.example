@@ -1,0 +1,22 @@
+application:
+  deploy:
+    artifact_path: https://www.winterhold.org/entries-1.0.0.jar
+    artifact_name: entries.jar
+    artifact_checksum: 1e99df3bacfb58c804daf24e03602d18
+    user: application
+    group: application
+    directory: /home/application
+    service: application
+  config:
+    host: '0.0.0.0'
+    port: 5000
+    database_url: 'jdbc:postgresql://pgsql1.dev.server:5432/application_db?ssl=true&sslfactory=org.postgresql.ssl.NonValidatingFactory'
+    database_user: application_user
+    database_password: test
+    database_schema: update
+  check:
+    endpoint: '/api/v1/status'
+    tags:
+      - dev
+      - v1
+    interval: '10s'
