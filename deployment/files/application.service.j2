@@ -7,7 +7,7 @@ EnvironmentFile={{ directory }}/.env
 SyslogIdentifier={{ service }}
 User={{ user }}
 Group={{ group }}
-ExecStart=/usr/bin/java -jar {{ directory }}/{{ artifact }}
+ExecStart=/usr/bin/java -Dserver.port=${APP_PORT} -jar {{ directory }}/{{ artifact }}
 WorkingDirectory={{ directory }}
 Restart=always
 
